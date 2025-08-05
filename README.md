@@ -2,9 +2,9 @@
 To Install run
 
 ```bash
-mkdir project-name
+git clone git@github.com:zan-chi/Typescript-template.git project-name
 cd project-name
-git clone git@github.com:zan-chi/Typescript-template.git
+
 
 ```
 
