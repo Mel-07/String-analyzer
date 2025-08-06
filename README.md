@@ -10,7 +10,7 @@ cd project-name
 
 ```bash
 npm init &&
-npm install typescript ts-node nodemon @types/node --save-dev
+npm install typescript ts-node nodemon @types/node tslib --save-dev
 npm run watch
 ```
 In the Package.json add the following inside script
