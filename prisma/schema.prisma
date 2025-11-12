@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model String_value {
+  id         String    @id
+  value      String    @unique
+  created_at DateTime  @default(now())
+  properties Properties?  
+}
+
+model Properties {
+  length                  Int
+  is_palindrome           Boolean
+  unique_characters       Int
+  word_count              Int
+  sha256_hash             String   @unique
+  character_frequency_map Json
+
+  properties_id           String   @unique
+  string_value            String_value   @relation(fields: [properties_id],references:[id],onDelete:Cascade)
+}
