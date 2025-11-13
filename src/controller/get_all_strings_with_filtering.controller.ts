@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import catchAsync from '../utilities/catchAsync';
 import prisma from '../lib/PRISMA';
-import { Prisma } from '../../generated/prisma/client';
+import { Prisma } from '@prisma/client';
 import { filter_parameter_types,isFilterError } from '../utilities/main_utils';
 import ErrorHandler from '../utilities/errorHandler';
 import { CreateResponsesType, QueryFilterResponse } from '../TYPES/RESPONDES_TYPE';
@@ -37,7 +37,7 @@ const get_all_strings_with_filtering = catchAsync(
       },
     });
 
-    const result = filter_value_db.map((item:CreateResponsesType) => {
+    const result = filter_value_db.map((item) => {
 
       return{
         id: item.id,

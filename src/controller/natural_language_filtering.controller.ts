@@ -14,7 +14,7 @@ const natural_language_filtering = catchAsync(
       include:{
         properties:true
       }
-    }).then((data:CreateResponsesType[])=> data.map((items)=>{
+    }).then((data)=> data.map((items)=>{
       return{
         id:items.id,
         properties:{
@@ -35,7 +35,7 @@ const natural_language_filtering = catchAsync(
     }
 
     if(palindromic && first_search_vowel ){
-        const result = getAllData.filter((items:CreateResponsesType)=> items.value[0].match(vowels) && items.properties?.is_palindrome);
+        const result = getAllData.filter((items)=> items.value[0].match(vowels) && items.properties?.is_palindrome);
         if(!result){
           return next(new ErrorHandler(` Query parsed but resulted in conflicting filters`,422));
         }
@@ -54,7 +54,7 @@ const natural_language_filtering = catchAsync(
     }
     else if(palindromic && search_single && all_world){
         const result = getAllData.filter(
-          (items:CreateResponsesType) =>
+          (items) =>
             items.properties?.word_count === 1 && items.properties.is_palindrome
         );
         if (!result) {
@@ -80,7 +80,7 @@ const natural_language_filtering = catchAsync(
       res.status(200).json(arrange_result);
     }
     else if(find_specific_letter && letter?.length ===1){
-        const result = getAllData.filter((items:CreateResponsesType)=> items.value.includes(letter!));
+        const result = getAllData.filter((items)=> items.value.includes(letter!));
         const arrange_result = {
           data: result,
           count: result.length,
@@ -104,7 +104,7 @@ const natural_language_filtering = catchAsync(
     }
     else if(number_value && assertion){
       if(assertion === "ge"){
-        const result = getAllData.filter((items:CreateResponsesType)=> items.properties?.length && items.properties?.length > number_value);
+        const result = getAllData.filter((items)=> items.properties?.length && items.properties?.length > number_value);
         if (!result) {
           return next(
             new ErrorHandler(
@@ -127,7 +127,7 @@ const natural_language_filtering = catchAsync(
         res.status(200).json(arrange_result);
       }else if(assertion === "le"){
         const result = getAllData.filter(
-          (items:CreateResponsesType) =>
+          (items) =>
             items.properties?.length && items.properties?.length < number_value
         );
         if (!result) {
