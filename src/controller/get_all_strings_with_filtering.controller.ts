@@ -4,7 +4,7 @@ import prisma from '../lib/PRISMA';
 import { Prisma } from '../../generated/prisma/client';
 import { filter_parameter_types,isFilterError } from '../utilities/main_utils';
 import ErrorHandler from '../utilities/errorHandler';
-import { QueryFilterResponse } from '../TYPES/RESPONDES_TYPE';
+import { CreateResponsesType, QueryFilterResponse } from '../TYPES/RESPONDES_TYPE';
 const get_all_strings_with_filtering = catchAsync(
   async (req: Request, res: Response,next:NextFunction) => {
     const queryParam: QueryFilterResponse = req.query as unknown as QueryFilterResponse;
@@ -37,7 +37,7 @@ const get_all_strings_with_filtering = catchAsync(
       },
     });
 
-    const result = filter_value_db.map((item) => {
+    const result = filter_value_db.map((item:CreateResponsesType) => {
 
       return{
         id: item.id,
