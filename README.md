@@ -1,5 +1,5 @@
 # **My Solution To String Analyzer Backend Service** #
-## **The Assignment Is Based On the Stage 1! Task Given By**
+## **The Assignment Is Based On the Stage 1! Task Given By HNG**
 
 
 ### _*what the service does*_
